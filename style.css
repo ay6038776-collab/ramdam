@@ -1,0 +1,311 @@
+/* ===== Reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Body ===== */
+body {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #0b1d2a 0%, #000 100%);
+  color: white;
+}
+
+/* ===== النجوم ===== */
+.stars, .twinkling {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.stars {
+  background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+}
+
+.twinkling {
+  background: transparent url('https://www.transparenttextures.com/patterns/dark-matter.png') repeat;
+  animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
+}
+
+/* ===== صفحة الدخول ===== */
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== صندوق الدخول ===== */
+.login-box {
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  padding: 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255,255,255,0.1);
+  z-index: 2;
+}
+
+.login-box h1 {
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px gold;
+}
+
+/* ===== Input ===== */
+input {
+  padding: 12px;
+  width: 260px;
+  border-radius: 25px;
+  border: none;
+  margin-top: 15px;
+  outline: none;
+  text-align: center;
+}
+
+/* ===== Button ===== */
+button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, gold, orange);
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px gold;
+}
+
+/* ===== الصفحة الرئيسية ===== */
+.main-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: gold;
+}
+
+/* ===== القمر ===== */
+.moon-container {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  margin: auto;
+  z-index: 2;
+  animation: fadeIn 1.5s ease;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+
+#moonCircle {
+  stroke-dasharray: 502;
+  stroke-dashoffset: 502;
+  animation: drawCircle 3s ease forwards;
+}
+
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ===== الهلال ===== */
+.crescent {
+  width: 160px;
+  height: 160px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+
+  opacity: 0;
+  animation: showMoon 1.5s ease forwards;
+  animation-delay: 0.4s;
+
+  box-shadow:
+    0 0 20px #fff,
+    0 0 40px #fff,
+    0 0 80px rgba(255,255,255,0.5);
+}
+
+.crescent::after {
+  content: "";
+  width: 160px;
+  height: 160px;
+  background: rgb(0, 29, 36);
+  border-radius: 50%;
+  position: absolute;
+  left: 45px;
+  top: 0;
+}
+
+@keyframes showMoon {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ===== الفانوس ===== */
+#lanternWrap {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: top center;
+  z-index: 3;
+  animation: swingLantern 3s ease-in-out infinite alternate;
+}
+
+@keyframes swingLantern {
+  from { transform: translateX(-50%) rotate(-6deg); }
+  to   { transform: translateX(-50%) rotate(6deg); }
+}
+
+#lanternSVG {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-25%)  scale(0.7);
+}
+
+/* رسم الفانوس */
+#lanternBody,
+#lanternBottom,
+#rope {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawLantern 2.2s ease forwards;
+}
+
+/* ترتيب الرسم */
+#rope { animation-delay: 0s; }
+#lanternBody { animation-delay: 0.2s; }
+#lanternBottom { animation-delay: 0.4s; }
+
+@keyframes drawLantern {
+  to { stroke-dashoffset: 0; }
+}
+
+/* إضاءة الفانوس */
+#lanternBody,
+#lanternBottom {
+  stroke: gold;
+  filter: drop-shadow(0 0 10px gold);
+}
+
+/* ===== النص ===== */
+h1, h2 {
+  text-shadow: 0 0 10px gold;
+}
+
+/* ===== صفحة رمضان ===== */
+#ramadanPage {
+  display: none;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+.ramadan-content {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== أنيميشن ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== نجمة ساقطة ===== */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(-45deg, white, transparent);
+  top: 0;
+  left: 50%;
+  animation: shoot 3s linear infinite;
+}
+
+@keyframes shoot {
+  from {
+    transform: translate(0,0) rotate(45deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-500px,500px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* زرار فيديوهات رمضان */
+.start-videos-container {
+    text-align: center;
+    margin: 40px 0;
+    z-index: 10;
+    position: relative;
+}
+
+.start-videos-btn {
+    background: linear-gradient(145deg, #ffcc33, #ff9900);
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), 0 5px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+    text-shadow: 0 0 5px #fff, 0 0 10px gold;
+
+    
+}
+
+.start-videos-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 10px 15px rgba(0,0,0,0.3);
+    text-shadow: 0 0 10px #fff, 0 0 20px gold;
+}
+
+.start-videos-btn:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5), 0 5px 10px rgba(0,0,0,0.2);
+}
+
+#startBtnContainer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s ease;
+}
+
+#startBtnContainer.show {
+    opacity: 1;
+    transform: translateY(0);
+}

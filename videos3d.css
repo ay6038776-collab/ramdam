@@ -1,0 +1,241 @@
+/* عام */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+}
+
+body.videos-page-3d {
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    perspective: 1200px; /* مهم للـ 3D */
+}
+
+/* النجوم الخلفية */
+.stars, .twinkling {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.stars {
+  background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+}
+
+.twinkling {
+  background: transparent url('https://www.transparenttextures.com/patterns/dark-matter.png') repeat;
+  animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
+}
+
+
+/* الهلال */
+.moon-halo {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff9c4, transparent 70%);
+    box-shadow: 0 0 50px #fff9c4;
+    z-index: 1;
+}
+
+/* الفانوس واقف */
+.lantern-animation {
+    position: fixed;
+    top: 150px;
+    left: 50px;
+    z-index: 2;
+}
+
+.lantern {
+    position: relative;
+    width: 50px;
+    height: 80px;
+}
+
+.lantern .body {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(145deg, #ffcc33, #ff9900);
+    border-radius: 8px;
+    position: absolute;
+    bottom: 0;
+    box-shadow: inset 0 0 10px rgba(255,255,200,0.8),
+                0 0 15px rgba(255,170,0,0.6);
+}
+
+.lantern .light {
+    width: 30px;
+    height: 35px;
+    background: radial-gradient(circle, #fff9c4, #ffeb3b);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+}
+
+.lantern .top {
+    width: 40px;
+    height: 15px;
+    background: #cc8400;
+    border-radius: 5px 5px 0 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lantern .bottom {
+    width: 40px;
+    height: 10px;
+    background: #cc8400;
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lantern .handle {
+    width: 30px;
+    height: 20px;
+    border: 2px solid #cc8400;
+    border-bottom: none;
+    border-radius: 50px 50px 0 0;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* العنوان */
+.page-header {
+    text-align: center;
+    padding: 50px 20px 20px 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.page-header h1 {
+    font-size: 3em;
+    color: gold;
+    text-shadow: 0 0 10px #fff, 0 0 20px gold;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.3em;
+    color: #fff9c4;
+}
+
+/* شبكة الفيديوهات 3D */
+.videos-grid-3d {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 5;
+}
+
+/* كارت الفيديو 3D */
+.video-card-3d {
+    background: rgba(0,0,0,0.6);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 10px 20px rgba(255,215,0,0.2);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.video-card-3d:hover {
+    transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(255,215,0,0.6);
+}
+
+/* فيديو داخل الكارت */
+.video-card-3d video {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+}
+
+/* عنوان الفيديو */
+.video-card-3d h3 {
+    text-align: center;
+    margin-top: 10px;
+    color: gold;
+    text-shadow: 0 0 5px #fff, 0 0 10px gold;
+}
+
+/* الكروت مخفية في البداية */
+.video-card-3d {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    transition: all 0.6s ease;
+}
+
+/* لما تظهر */
+.video-card-3d.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
+/* الشبكة */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+/* الكارت */
+.video-card-3d {
+    width: 100%;
+    height: 300px; /* 👈 الحجم الثابت */
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #111;
+
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    transform-style: preserve-3d;
+    transition: 0.3s ease;
+}
+
+/* الفيديو نفسه */
+.video-card-3d video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 👈 يخلي الفيديو يملأ الكارت */
+    border-radius: 20px;
+}
+
+/* العنوان */
+.video-title {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    color: gold;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 0 0 10px rgba(255,215,0,0.8);
+}

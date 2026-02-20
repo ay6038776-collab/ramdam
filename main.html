@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>رمضان كريم 🌙</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="main-page">
+
+    <div class="moon-container">
+
+        <!-- القمر المرسوم -->
+        <svg width="220" height="220" viewBox="0 0 220 220" class="moon-svg">
+            <circle 
+                id="moonCircle"
+                cx="110" 
+                cy="110" 
+                r="80"
+                stroke="white"
+                stroke-width="3"
+                fill="none"
+            />
+        </svg>
+
+        <!-- الهلال -->
+        <div class="crescent" id="crescent"></div>
+
+        <!-- الفانوس -->
+        <svg id="lanternSVG" width="120" height="200" viewBox="0 0 120 200">
+
+            <!-- الحبل -->
+            <line x1="60" y1="0" x2="60" y2="30"
+                stroke="gold"
+                stroke-width="2"
+                id="rope"/>
+
+            <!-- جسم الفانوس -->
+            <rect x="35" y="30" width="50" height="90"
+                stroke="gold"
+                stroke-width="3"
+                fill="none"
+                id="lanternBody"/>
+
+            <!-- الجزء السفلي -->
+            <polygon points="35,120 85,120 75,150 45,150"
+                stroke="gold"
+                stroke-width="3"
+                fill="none"
+                id="lanternBottom"/>
+        </svg>
+
+        <!-- النص -->
+        <h2 id="greeting"></h2>
+
+    </div>
+    <!-- صفحة التهنئة بعد الانيميشن -->
+<div id="ramadanPage" class="hidden">
+    <div class="ramadan-content">
+        <h1>رمضان كريم 🌙✨</h1>
+        <p>
+            أهديك هذه الرسالة بمناسبة حلول شهر رمضان المبارك.<br>
+            أتمنى لك أيام مليانة فرحة، سلام، ونجاح.<br>
+          كل سنة وإنتي طيبه ❤❤  💛
+        </p>
+    </div>
+</div>
+   <div class="stars"></div>
+<div class="twinkling"></div>
+
+<div class="start-videos-container" id="startBtnContainer">
+    <button class="start-videos-btn" onclick="location.href='videos3d.html'">
+        🌙 لي التكمله دوسي هنا 😂
+    </button>
+</div>
+
+
+
+
+<script src="js/script.js"></script>
+</body>
+</html>
